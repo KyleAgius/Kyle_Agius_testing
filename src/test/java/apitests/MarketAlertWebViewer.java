@@ -1,6 +1,5 @@
-package org.api;
+package apitests;
 
-import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -28,23 +27,6 @@ public class MarketAlertWebViewer {
         WebElement loginField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("UserId")));
         loginField.sendKeys(userID);
         loginField.submit();
-    }
-
-    public void PostAlert(String id, int alertType, String Title, String desc, int price, String url, String image){
-        PostManager poster = new PostManager(HttpClients.createDefault());
-        AlertDetails alert = new AlertDetails();
-
-        alert.setPostedBy(id);
-        alert.setAlertType(alertType);
-        alert.setTitle(Title);
-        alert.setDesc(desc);
-        alert.setPrice(price);
-        alert.setUrl(url);
-        alert.setImageSrc(image);
-
-        String alertJson = alert.toJson();
-
-        poster.SendPost("https://api.marketalertum.com/Alert", alertJson);
     }
 
     public List<AlertPageObject> GetAlerts(int qty){

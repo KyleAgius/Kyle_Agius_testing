@@ -1,4 +1,4 @@
-package org.api;
+package apitests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;

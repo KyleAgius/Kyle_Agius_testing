@@ -6,7 +6,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.screenscraper.api.AlertDetails;
-import org.screenscraper.pageobjects.AssetPageObject;
+import org.screenscraper.storescraper.AssetPageObject;
 
 import static org.mockito.Matchers.anyObject;
 import static org.mockito.Matchers.anyString;

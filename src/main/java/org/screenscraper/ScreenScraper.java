@@ -2,26 +2,21 @@ package org.screenscraper;
 
 import org.screenscraper.api.AlertApiInteraction;
 import org.screenscraper.api.AlertDetails;
-import org.screenscraper.pageobjects.AssetPageObject;
-import org.screenscraper.pageobjects.UnityStorePageObject;
+import org.screenscraper.storescraper.AssetPageObject;
+import org.screenscraper.storescraper.UnityStorePageObject;
 
 import java.util.List;
 
 public class ScreenScraper {
+
     UnityStorePageObject store_object;
     AlertApiInteraction alert_object;
     AssetPageObject asset_object;
-
-    public void SetStoreObject(UnityStorePageObject inp_object){
-        store_object = inp_object;
+    public ScreenScraper(UnityStorePageObject inp_store, AlertApiInteraction inp_api, AssetPageObject inp_asset){
+        store_object = inp_store;
+        alert_object = inp_api;
+        asset_object = inp_asset;
     }
-    public void SetAlertObject(AlertApiInteraction inp_object){
-        alert_object = inp_object;
-    }
-    public void SetAssetObject(AssetPageObject inp_object){
-        asset_object = inp_object;
-    }
-
     public void ScrapeAlerts(String query, int qty, String userID) {
         store_object.SearchStore(query);
         List<String> assetURLs = store_object.GetProductLinksFromStore(qty);
@@ -31,7 +26,7 @@ public class ScreenScraper {
                 AlertDetails details = asset_object.GetDetails();
 
                 details.setPostedBy(userID);
-                System.out.println(alert_object.UploadAlert(details.toJson()));
+                alert_object.UploadAlert(details.toJson());
             }
         }
     }

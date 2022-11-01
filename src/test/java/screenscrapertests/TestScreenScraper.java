@@ -6,8 +6,8 @@ import org.mockito.Mockito;
 import org.screenscraper.api.AlertDetails;
 import org.screenscraper.ScreenScraper;
 import org.screenscraper.api.AlertApiInteraction;
-import org.screenscraper.pageobjects.AssetPageObject;
-import org.screenscraper.pageobjects.UnityStorePageObject;
+import org.screenscraper.storescraper.AssetPageObject;
+import org.screenscraper.storescraper.UnityStorePageObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,10 +26,7 @@ public class TestScreenScraper {
         alert_object = Mockito.mock(AlertApiInteraction.class);
         asset_object = Mockito.mock(AssetPageObject.class);
 
-        scraper = new ScreenScraper();
-        scraper.SetAssetObject(asset_object);
-        scraper.SetStoreObject(store_object);
-        scraper.SetAlertObject(alert_object);
+        scraper = new ScreenScraper(store_object, alert_object, asset_object);
     }
 
     @Test

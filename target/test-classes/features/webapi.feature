@@ -17,7 +17,8 @@ Feature: Alert Api Interactions
 
   Scenario: Alert Layout
     Given I am a user of marketalertum
-    And I am an administrator of the website and I upload 3 alerts
+    And I am an administrator of the website
+    And I upload 3 alerts
     When I view a list of 3 alerts
     Then each alert should contain an icon
     And each alert should contain a heading
@@ -28,13 +29,15 @@ Feature: Alert Api Interactions
 
   Scenario: Alert Limit
     Given I am a user of marketalertum
-    Given I am an administrator of the website and I upload 6 alerts
+    And I am an administrator of the website
+    And I upload 6 alerts
     When I view a list of 6 alerts
     Then I should see 5 alerts
 
   Scenario Outline: Icon Check
     Given I am a user of marketalertum
-    Given I am an administrator of the website and I upload an alert of type <alert-type>
+    And I am an administrator of the website
+    And I upload an alert of type <alert-type>
     When I view a list of 1 alerts
     Then I should see 1 alerts
     And the icon displayed should be "<icon-file-name>"

@@ -1,4 +1,4 @@
-package org.screenscraper.pageobjects;
+package org.screenscraper.storescraper;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
